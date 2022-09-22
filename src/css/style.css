@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
+.root {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.FigureAndWord {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.FigureAndWord img {
+    width: 400px;
+}
+
+.FigureAndWord div button {
+    margin-top: 30px;
+    width: 150px;
+    height: 50px;
+    background-color: #27AE60;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.Letters ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Letters ul:first-of-type {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.Letters ul:last-of-type {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.Letters ul li button {
+    width: 40px;
+    height: 40px;
+    background-color: #9FAAB5;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #80818A;
+}
+
+.Attempt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Attempt span {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+}
+
+.Attempt input {
+    margin: 0 10px;
+    width: 300px;
+    height: 35px;
+    border: 2px solid #B8B8B8;
+    border-radius: 5px;
+}
+
+.Attempt button {
+    width: 100px;
+    height: 40px;
+    background-color: #E1ECF4;
+    border: 1px solid #397EB4;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #397EB4;
+}
