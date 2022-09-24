@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap');
 
 .root {
     height: 100vh;
@@ -8,7 +8,6 @@
 }
 
 .App {
-    width: 50%;
     display: flex;
     flex-direction: column;
 }
@@ -23,16 +22,30 @@
     width: 400px;
 }
 
+.FigureAndWord>div {
+    display: flex;
+    flex-direction: column;
+}
+
 .FigureAndWord div button {
     margin-top: 30px;
+    margin-left: 100px;
     width: 150px;
     height: 50px;
     background-color: #27AE60;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
     font-weight: bold;
     font-size: 15px;
     color: #ffffff;
+}
+
+.FigureAndWord>div>div {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    font-size: 40px;
+    letter-spacing: 5px;
 }
 
 .Letters ul {
@@ -53,12 +66,9 @@
 .Letters ul li button {
     width: 40px;
     height: 40px;
-    background-color: #9FAAB5;
-    border: none;
     border-radius: 5px;
     font-weight: bold;
     font-size: 15px;
-    color: #80818A;
 }
 
 .Attempt {
