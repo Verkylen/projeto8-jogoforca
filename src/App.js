@@ -79,7 +79,7 @@ export default function App() {
             setButtonClass('Deactivated');
             setCursorType('default');
 
-            if (JSON.stringify(typed.split('')) === JSON.stringify(word)) {
+            if (JSON.stringify(typed.toLowerCase().split('')) === JSON.stringify(word)) {
                 setChallengeColor('green');
             } else {
                 setGallowsStatus(6);
@@ -105,7 +105,7 @@ export default function App() {
                     {Object.keys(alphabet).slice(13, 26).map(GenerateLetters)}
                 </ul>
             </div>
-            <div className="Attempt"><span>Já sei a palavra!</span><input onChange={(e) => typed = e.target.value} disabled={toggle} type="text"/><button  onClick={risk} disabled={toggle} style={{cursor: cursorType}}>Chutar</button></div>
+            <div className="Attempt"><span>Já sei a palavra!</span><input onChange={e => typed = e.target.value} disabled={toggle} type="text"/><button onClick={risk} disabled={toggle} style={{cursor: cursorType}}>Chutar</button></div>
         </div>
     );
 }
