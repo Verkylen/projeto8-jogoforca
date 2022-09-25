@@ -10,28 +10,24 @@ import palavras from "./palavras";
 
 export default function App() {
     const images = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
-    const alphabet = {'A': 'aáâã', 'B':'b', 'C': 'c', 'D': 'd', 'E': 'eéê', 'F': 'f', 'G': 'g', 'H': 'h', 'I': 'ií', 'J': 'j', 'K': 'k', 'L': 'l', 'M': 'm', 'N': 'n', 'O': 'oóôõ', 'P': 'p', 'Q': 'q', 'R': 'r', 'S': 's', 'T': 't', 'U': 'uú', 'V': 'v', 'W': 'w', 'X': 'x', 'Y': 'y', 'Z': 'z'};
+    const alphabet = {'A': 'aáâã', 'B':'b', 'C': 'c', 'D': 'd', 'E': 'eéê', 'F': 'f', 'G': 'g', 'H': 'h', 'I': 'ií', 'J': 'j', 'K': 'k', 'L': 'l', 'M': 'm', 'N': 'n', 'O': 'oóôõ', 'P': 'p', 'Q': 'q', 'R': 'r', 'S': 's', 'T': 't', 'U': 'uúü', 'V': 'v', 'W': 'w', 'X': 'x', 'Y': 'y', 'Z': 'z'};
 
     let [gallowsStatus, setGallowsStatus] = useState(0);
     let [toggle, setToggle] = React.useState(true);
+    let [cursorType, setCursorType] = React.useState('default');
     let [word, setWord] = React.useState([]);
     let [challenge, setChallenge] = React.useState([]);
-    let [backColor, setBackColor] = React.useState('#9FAAB5');
-    let [buttonBorder, setButtonBorder] = React.useState('none');
-    let [letterColor, setLetterColor] = React.useState('#80818A');
-    let [cursorType, setCursorType] = React.useState('default');
+    let [buttonClass, setButtonClass] = React.useState('Deactivated');
     let [challengeColor, setChallengeColor] = React.useState('');
 
     function start() {
         setGallowsStatus(0);
         setToggle(false);
+        setCursorType('pointer');
         const randomWord = palavras[Math.floor(Math.random()*palavras.length)].split('');
         setWord(randomWord);
         setChallenge(randomWord.map(({}, index) => <span key={index}>_</span>));
-        setBackColor('#E1ECF4');
-        setButtonBorder('1px solid #397EB4');
-        setLetterColor('#397EB4');
-        setCursorType('pointer');
+        setButtonClass('Activated');
     }
 
     function compare(letter) {
@@ -44,27 +40,52 @@ export default function App() {
         }
 
         if (JSON.stringify(newChallenge) === JSON.stringify(challenge)) {
-            console.log('wrong');
             setGallowsStatus(gallowsStatus + 1);
 
             if (gallowsStatus === 5) {
                 setChallenge(word.map((letter, index) => <span key={index}>{letter}</span>));
+                setChallengeColor('red');
+                setToggle(true);
+                setButtonClass('Deactivated');
+                setCursorType('default');
             }
         } else if ( newChallenge.filter(element => element.props.children === '_').length !== 0 ) {
-            console.log('foretell');
             setChallenge(newChallenge);
         } else {
             setChallenge(word.map((letter, index) => <span key={index}>{letter}</span>));
             setChallengeColor('green');
+            setToggle(true);
+            setButtonClass('Deactivated');
+            setCursorType('default');
         }
     }
 
     function GenerateLetters(props) {
         let [off, setOff] = React.useState(false);
+        let [buttonStyle, setButtonStyle] = React.useState({});
+        const deactivatedButton = {backgroundColor: '#9FAAB5', border: 'none', color: '#80818A', cursor: 'default'};
 
         return (
-            <li key={props}><button onClick={() => {setOff(true); compare(props)}} disabled={toggle || off} style={{backgroundColor: backColor, border: buttonBorder, color: letterColor, cursor: cursorType}}>{props}</button></li>
+            <li key={props}><button onClick={() => {setButtonStyle(deactivatedButton); setOff(true); compare(props)}} className={buttonClass} disabled={toggle || off} style={buttonStyle}>{props}</button></li>
         );
+    }
+
+    let typed = '';
+
+    function risk() {
+        if (typed !== '') {
+            setChallenge(word.map((letter, index) => <span key={index}>{letter}</span>));
+            setToggle(true);
+            setButtonClass('Deactivated');
+            setCursorType('default');
+
+            if (JSON.stringify(typed.split('')) === JSON.stringify(word)) {
+                setChallengeColor('green');
+            } else {
+                setGallowsStatus(6);
+                setChallengeColor('red');
+            }
+        }
     }
 
     return (
@@ -84,7 +105,7 @@ export default function App() {
                     {Object.keys(alphabet).slice(13, 26).map(GenerateLetters)}
                 </ul>
             </div>
-            <div className="Attempt"><span>Já sei a palavra!</span><input type="text" disabled={toggle}/><button disabled={toggle} style={{cursor: cursorType}}>Chutar</button></div>
+            <div className="Attempt"><span>Já sei a palavra!</span><input onChange={(e) => typed = e.target.value} disabled={toggle} type="text"/><button  onClick={risk} disabled={toggle} style={{cursor: cursorType}}>Chutar</button></div>
         </div>
     );
 }

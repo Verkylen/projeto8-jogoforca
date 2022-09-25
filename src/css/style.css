@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap');
 
+body {
+    margin: 0;
+}
+
 .root {
     height: 100vh;
     display: flex;
@@ -69,6 +73,20 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 15px;
+}
+
+.Deactivated {
+    background-color: #9FAAB5;
+    border: none;
+    color: #80818A;
+    cursor: default;
+}
+
+.Activated {
+    background-color: #E1ECF4;
+    border: 1px solid #397EB4;
+    color: #397EB4;
+    cursor: pointer;
 }
 
 .Attempt {

@@ -21,7 +21,12 @@ const palavras = [
     "uva", "uísque", "união", "universo", "unanimidade", "universidade", "urso", 
     "vela", "valeta", "vacilo", "valor", "vagem", "vadiagem", "vaca", "valentia", "vidro", "valsa", 
     "xícara", "xadrez", "xilofone", "xarope", "xenofobia", "xereta", "xerife", "xaveco", "xixi", "xale", 
-    "zebra", "zagueiro", "zero", "zoeira", "zodíaco", "zangão", "zepelim", "zinco", "zoológico", "zumbido"
+    "zebra", "zagueiro", "zero", "zoeira", "zodíaco", "zangão", "zepelim", "zinco", "zoológico", "zumbido",
+    "abacaxi", "ornitorrinco", "trombone", "abajur", "lamparina", "coelho", "tartaruga", "amarelo", "verde",
+    "azul", "preto", "branco", "vermelho", "roxo", "rosa", "marrom", "viola", "violão", "violino", "piano",
+    "guitarra", "tambor", "bateria", "zinco", "cabrita", "boiadeiro", "bezerro", "bala", "doce", "camelo",
+    "lagartixa", "verme", "vermífugo", "verso", "velho", "antigo", "mansão", "maçã", "manteiga", "mãe", "menino",
+    "menina", "pai", "dinossauro", "rinoceronte", "hipopótamo", "mamute"
 ]
 
 export default palavras;
