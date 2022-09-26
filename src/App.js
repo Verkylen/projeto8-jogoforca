@@ -69,7 +69,7 @@ export default function App() {
         const deactivatedButton = {backgroundColor: '#9FAAB5', border: 'none', color: '#80818A', cursor: 'default'};
 
         return (
-            <li key={props}><button onClick={() => {setButtonStyle(deactivatedButton); setOff(true); compare(props)}} className={buttonClass} disabled={toggle || off} style={buttonStyle}>{props}</button></li>
+            <li key={props}><button data-identifier="letter" onClick={() => {setButtonStyle(deactivatedButton); setOff(true); compare(props)}} className={buttonClass} disabled={toggle || off} style={buttonStyle}>{props}</button></li>
         );
     }
 
@@ -94,10 +94,10 @@ export default function App() {
     return (
         <div className="App">
             <div className="FigureAndWord">
-                <img src={images[gallowsStatus]} alt="Forca"/>
+                <img data-identifier="game-image" src={images[gallowsStatus]} alt="Forca"/>
                 <div>
-                    <button onClick={start}>Escolher Palavra</button>
-                    <div style={{color: challengeColor}}>{challenge}</div>
+                    <button data-identifier="choose-word" onClick={start}>Escolher Palavra</button>
+                    <div data-identifier="word" style={{color: challengeColor}}>{challenge}</div>
                 </div>
             </div>
             <div className="Letters">
@@ -108,7 +108,7 @@ export default function App() {
                     {Object.keys(alphabet).slice(13, 26).map(GenerateLetters)}
                 </ul>
             </div>
-            <div className="Attempt"><span>Já sei a palavra!</span><input onChange={e => typed = e.target.value} disabled={toggle} type="text"/><button onClick={risk} disabled={toggle} style={{cursor: cursorType}}>Chutar</button></div>
+            <div className="Attempt"><span>Já sei a palavra!</span><input data-identifier="type-guess" onChange={e => typed = e.target.value} disabled={toggle} type="text"/><button data-identifier="guess-button" onClick={risk} disabled={toggle} style={{cursor: cursorType}}>Chutar</button></div>
         </div>
     );
 }
