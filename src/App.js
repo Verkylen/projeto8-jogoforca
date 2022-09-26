@@ -21,12 +21,15 @@ export default function App() {
     let [challengeColor, setChallengeColor] = React.useState('');
 
     function start() {
+        if (challengeColor === 'red' || challengeColor === 'green') {
+            window.location.reload();
+        }
         setGallowsStatus(0);
         setToggle(false);
         setCursorType('pointer');
         const randomWord = palavras[Math.floor(Math.random()*palavras.length)].split('');
         setWord(randomWord);
-        setChallenge(randomWord.map(({}, index) => <span key={index}>_</span>));
+        setChallenge(randomWord.map((letter, index) => <span key={index}>_</span>));
         setButtonClass('Activated');
     }
 
